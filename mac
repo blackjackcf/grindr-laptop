@@ -76,6 +76,14 @@ brew_install_or_upgrade() {
   fi
 }
 
+brew_cask_install() {
+  if brew_cask_is_installed "$1"; then
+    fancy_echo ""$@" is already installed, skipping ..."
+  else
+    brew cask install "$@"
+  fi
+}
+
 brew_is_installed() {
   local name
   name="$(brew_expand_alias "$1")"
@@ -90,12 +98,23 @@ brew_is_upgradable() {
   ! brew outdated --quiet "$name" >/dev/null
 }
 
+brew_cask_is_installed() {
+  local name
+  name="$(brew_cask_expand_alias "$1")"
+
+  brew cask list -1 | grep -Fqx "$name"
+}
+
 brew_tap() {
   brew tap "$1" --repair 2> /dev/null
 }
 
 brew_expand_alias() {
   brew info "$1" 2>/dev/null | head -1 | awk '{gsub(/.*\//, ""); gsub(/:/, ""); print $1}'
+}
+
+brew_cask_expand_alias() {
+  brew cask info "$1" 2>/dev/null | head -1 | awk '{gsub(/.*\//, ""); gsub(/:/, ""); print $1}'
 }
 
 brew_launchctl_restart() {
@@ -156,13 +175,6 @@ brew_install_or_upgrade 'tmux'
 brew_install_or_upgrade 'vim'
 brew_install_or_upgrade 'zsh'
 
-fancy_echo "Updating Heroku tools ..."
-brew_install_or_upgrade 'heroku-toolbelt'
-brew_install_or_upgrade 'parity'
-
-fancy_echo "Updating GitHub tools ..."
-brew_install_or_upgrade 'hub'
-
 fancy_echo "Updating image tools ..."
 brew_install_or_upgrade 'imagemagick'
 
@@ -176,10 +188,27 @@ brew_install_or_upgrade 'rbenv'
 brew_install_or_upgrade 'ruby-build'
 
 fancy_echo "Updating databases ..."
-brew_install_or_upgrade 'postgres'
+brew_install_or_upgrade 'mysql'
+brew_launchctl_restart 'mysql'
 brew_install_or_upgrade 'redis'
-brew_launchctl_restart 'postgresql'
 brew_launchctl_restart 'redis'
+brew_install_or_upgrade 'mongodb26'
+
+fancy_echo "Installing Java8 ..."
+brew_cask_install 'java'
+
+fancy_echo "Configuring Java ..."
+append_to_zshrc 'export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"'
+
+fancy_echo "Installing Grindr dependencies ..."
+brew_install_or_upgrade 'maven'
+brew_install_or_upgrade 'zookeeper'
+brew_install_or_upgrade 'dynamodb-local'
+brew_install_or_upgrade 'elasticsearch'
+brew_install_or_upgrade 'rabbitmq'
+
+fancy_echo "Installing IntelliJ IDEA ..."
+brew_cask_install 'intellij-idea'
 
 fancy_echo "Configuring Ruby ..."
 find_latest_ruby() {
