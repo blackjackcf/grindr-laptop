@@ -1,11 +1,9 @@
-Laptop
+Grindr-Laptop 
 ======
 
-Laptop is a script to set up an OS X laptop for web development.
+![grindr](http://www.grindr.com/wp-content/uploads/2015/10/grindr-logo.png)
 
-It can be run multiple times on the same machine safely.
-It installs, upgrades, or skips packages
-based on what is already installed on the machine.
+Laptop is a script to set up a Mac OS X or Linux laptop with the basic development tools for the Grindr Services Team.
 
 Requirements
 ------------
@@ -22,35 +20,18 @@ versions are welcome.
 Install
 -------
 
-Download, review, then execute the script:
+Read, then run the script:
 
-```sh
-curl --remote-name https://raw.githubusercontent.com/thoughtbot/laptop/master/mac
-less mac
-sh mac 2>&1 | tee ~/laptop.log
-```
+`bash <(curl -s https://raw.githubusercontent.com/blackjackcf/grindr-laptop/master/mac) 2>&1 tee ~/laptop.log`
 
-Optionally, [install thoughtbot/dotfiles][dotfiles].
+Or, if you want to run it locally, pull down this repo and:
 
-[dotfiles]: https://github.com/thoughtbot/dotfiles#install
+`sh mac 2>&1 | tee ~/laptop.log`  
 
 Debugging
 ---------
 
 Your last Laptop run will be saved to `~/laptop.log`.
-Read through it to see if you can debug the issue yourself.
-If not, copy the lines where the script failed into a
-[new GitHub Issue](https://github.com/thoughtbot/laptop/issues/new) for us.
-Or, attach the whole log file as an attachment.
-
-OS X El Capitan (10.11)
------------------------
-
-You may have problems installing Homebrew for the first time on OS X El
-Capitan due to permission changes to the /usr directory (within which the Homebrew
-installation is typically located). See the [Homebrew El Capitan troubleshooting instructions](https://github.com/Homebrew/homebrew/blob/master/share/doc/homebrew/El_Capitan_and_Homebrew.md)
-for steps to resolve the permissions issues that interfere with Homebrew's
-installation.
 
 What it sets up
 ---------------
@@ -78,19 +59,6 @@ Unix tools:
 [The Silver Searcher]: https://github.com/ggreer/the_silver_searcher
 [Tmux]: http://tmux.github.io/
 [Zsh]: http://www.zsh.org/
-
-Heroku tools:
-
-* [Heroku Toolbelt] and [Parity] for interacting with the Heroku API
-
-[Heroku Toolbelt]: https://toolbelt.heroku.com/
-[Parity]: https://github.com/thoughtbot/parity
-
-GitHub tools:
-
-* [Hub] for interacting with the GitHub API
-
-[Hub]: http://hub.github.com/
 
 Image tools:
 
@@ -120,13 +88,32 @@ Programming languages and configuration:
 
 Databases:
 
-* [Postgres] for storing relational data
+* [MySQL] for your database needs
+* [MongoDB] - The "M" in the MEAN Stack
 * [Redis] for storing key-value data
 
-[Postgres]: http://www.postgresql.org/
+[MySQL]: https://www.mysql.com/
+[MongoDB]: https://www.mongodb.org/
 [Redis]: http://redis.io/
 
 It should take less than 15 minutes to install (depends on your machine).
+
+Grindr Custom Stuff:
+* [Zookeeper] for maintaining configuration
+* [Maven] as your build manager for Java projects
+* [DynamoDB] for all your Amazon NoSQL needs
+* [Elasticsearch] for providing insight behind your data
+* [RabbitMQ] for your message broker
+* [IntelliJ] for your Java development needs
+* [iTerm2] as a better Terminal
+
+[Zookeeper]: https://zookeeper.apache.org/
+[Maven]: https://maven.apache.org/
+[DynamoDB]: https://aws.amazon.com/dynamodb/
+[Elasticsearch]: https://www.elastic.co/
+[RabbitMQ]: https://www.rabbitmq.com/
+[IntelliJ]: https://www.jetbrains.com/idea/
+[iTerm2]: https://www.iterm2.com/
 
 Customize in `~/.laptop.local`
 ------------------------------
