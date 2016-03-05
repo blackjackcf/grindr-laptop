@@ -204,11 +204,18 @@ fancy_echo "Installing Grindr dependencies ..."
 brew_install_or_upgrade 'maven'
 brew_install_or_upgrade 'zookeeper'
 brew_install_or_upgrade 'dynamodb-local'
-brew_install_or_upgrade 'elasticsearch'
+brew_install_or_upgrade 'elasticsearch17'
 brew_install_or_upgrade 'rabbitmq'
+brew_install_or_upgrade 'groovy'
 
 fancy_echo "Installing iTerm 2 ..."
 brew_cask_install 'iterm2-beta'
+
+fancy_echo "Installing tmate, so you can share your terminal ..."
+brew_install_or_upgrade 'tmate'
+
+fancy_echo "Installing MacVim, the Mac implementation of the best text editor out there ..."
+brew_install_or_upgrade 'macvim'
 
 fancy_echo "Installing IntelliJ IDEA Community Edition ..."
 brew_cask_install 'intellij-idea-ce'

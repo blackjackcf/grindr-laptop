@@ -104,16 +104,20 @@ Grindr Custom Stuff:
 * [DynamoDB] for all your Amazon NoSQL needs
 * [Elasticsearch] for providing insight behind your data
 * [RabbitMQ] for your message broker
+* [Groovy] to sprinkle a dynamically-typed language into your life
 * [IntelliJ] for your Java development needs
 * [iTerm2] as a better Terminal
+* [Tmate] so you can share your code via your Terminal
 
 [Zookeeper]: https://zookeeper.apache.org/
 [Maven]: https://maven.apache.org/
 [DynamoDB]: https://aws.amazon.com/dynamodb/
 [Elasticsearch]: https://www.elastic.co/
 [RabbitMQ]: https://www.rabbitmq.com/
+[Groovy]: http://www.groovy-lang.org/
 [IntelliJ]: https://www.jetbrains.com/idea/
 [iTerm2]: https://www.iterm2.com/
+[Tmate]: https://tmate.io/
 
 Customize in `~/.laptop.local`
 ------------------------------
