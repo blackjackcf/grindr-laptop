@@ -22,7 +22,7 @@ Install
 
 Read, then run the script:
 
-`bash <(curl -s https://raw.githubusercontent.com/blackjackcf/grindr-laptop/master/mac) 2>&1 tee ~/laptop.log`
+`bash <(curl -s https://raw.githubusercontent.com/catherinetcai/grindr-laptop/master/mac) 2>&1 tee ~/laptop.log`
 
 Or, if you want to run it locally, pull down this repo and:
 
